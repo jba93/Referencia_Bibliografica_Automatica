@@ -130,24 +130,23 @@ char formatanome(char nome[50], char ref[20])
 
 main()
 {
+	setlocale(LC_ALL, "Portuguese"); //para aceitar caracteres especiais
 	printf ("*** PROGRAMA QUE COLOCA NOMES EM REFERENCIA BIBLIOGRAFICA ***");
 	int op = 1;
 	while (op==1)
 	{
-		setlocale(LC_ALL, "Portuguese");
 		char nome[50], ref[20];
 		int x;
-		for (x=0; x<21; x++)
+		for (x=0; x<21; x++) //zera o vetor
 			ref[x]=' ';
-		int i;
 		printf("\n\n\nDigite o nome completo a ser formatado: "); 
-		fflush(stdin); //limpar o buffer
-		gets(nome);
-		formatanome(nome, ref); //chama a segunda função
-		fflush(stdin);
+		fflush(stdin); //limpa o buffer
+		gets(nome); //armazena o nome digitado
+		formatanome(nome, ref); //chama a função que formata o nome digitado
 		printf("Nome em referência bibliográfica: %s\n\n\n", ref);
-		printf ("Digite 1 para formatar outro nome: ");
+		printf ("Digite:\n1 para formatar outro nome / qualquer outra tecla para sair\n");
 		scanf ("%d", &op);
+		if (op!=1) //se for diferente de 1, o programa encerra
+		    break;
 	}
-    	exit(0);
 }
